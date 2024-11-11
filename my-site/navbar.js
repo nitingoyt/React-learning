@@ -37,16 +37,16 @@ export default function Navbar(){
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
       </form>
-      <div class="btn-group">
-  <button type="button" class="btn btn-primary">Search</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropdown</span>
+      <div className="btn-group">
+  <button type="button" className="btn btn-primary">Search</button>
+  <button type="button" className="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span className="visually-hidden">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu">
-    <li><Link class="dropdown-item" to="/">Name</Link></li>
-    <li><Link class="dropdown-item" to="/">Age</Link></li>
-    <li><Link class="dropdown-item" to="/">Phone</Link></li>
-    <li><Link class="dropdown-item" to="/">Email</Link></li>
+  <ul className="dropdown-menu">
+    <li><Link className="dropdown-item" to="/">Name</Link></li>
+    <li><Link className="dropdown-item" to="/">Age</Link></li>
+    <li><Link className="dropdown-item" to="/">Phone</Link></li>
+    <li><Link className="dropdown-item" to="/">Email</Link></li>
   </ul>
 </div>
     </div>
@@ -64,25 +64,25 @@ import React from 'react'
 export default function Forms(){
     return(
         <>
-         <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label" >Name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Full name" aria-describedby="emailHelp"/>
+         <div className="mb-3">
+    <label for="exampleInputEmail1" className="form-label" >Name</label>
+    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Full name" aria-describedby="emailHelp"/>
   </div>
-         <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Age</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Age" aria-describedby="emailHelp"/>
+         <div className="mb-3">
+    <label for="exampleInputEmail1" className="form-label">Age</label>
+    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter Age" aria-describedby="emailHelp"/>
   </div>
-         <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email@example.com" aria-describedby="emailHelp"/>
+         <div className="mb-3">
+    <label for="exampleInputEmail1" className="form-label">Email</label>
+    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email@example.com" aria-describedby="emailHelp"/>
   </div>
-         <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Contact</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="+91" aria-describedby="emailHelp"/>
+         <div className="mb-3">
+    <label for="exampleInputEmail1" className="form-label">Contact</label>
+    <input type="email" className="form-control" id="exampleInputEmail1" placeholder="+91" aria-describedby="emailHelp"/>
     <div className="form-text" id="basic-addon4">Enter +91 indian cell only</div>
   </div>
-  <div class="d-grid gap-1 col-3 mx-auto">
-  <button class="btn btn-primary" type="button">Submit</button>
+  <div className="d-grid gap-1 col-3 mx-auto">
+  <button className="btn btn-primary" type="button">Submit</button>
 </div>
         </>
     )
