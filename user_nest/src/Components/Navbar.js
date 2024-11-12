@@ -1,8 +1,20 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({users,setUsers}) {
   const location = useLocation();
+
+  function filterSearch(e){
+const {name,value}=e.target
+
+const searchTerm=value.toLowerCase()
+setUsers(()=>(
+  users.filter(item => item.email.includes(searchTerm)) // Filter by search term
+  .sort((a, b) => a.email.localeCompare(b.email))
+))
+
+  }
+  
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -35,6 +47,10 @@ export default function Navbar() {
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  onChange={(e)=>filterSearch(e)}
+           
+                  
+                
                 />
                 <div className="btn-group">
                   <button type="button" className="btn btn-primary">
@@ -49,10 +65,10 @@ export default function Navbar() {
                     <span className="visually-hidden">Toggle Dropdown</span>
                   </button>
                   <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/">Name</Link></li>
-                    <li><Link className="dropdown-item" to="/">Age</Link></li>
-                    <li><Link className="dropdown-item" to="/">Phone</Link></li>
-                    <li><Link className="dropdown-item" to="/">Email</Link></li>
+                    <li><Link className="dropdown-item" to="/users">Name</Link></li>
+                    <li><Link className="dropdown-item" to="/users">Age</Link></li>
+                    <li><Link className="dropdown-item" to="/users">Phone</Link></li>
+                    <li><Link className="dropdown-item" to="/users">Email</Link></li>
                   </ul>
                 </div>
               </div>

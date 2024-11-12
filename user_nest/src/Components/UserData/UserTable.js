@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-export default function UserTable({ users = [], deleteUser }) {
+export default function UserTable({ users = [], deleteUser ,sortedUsers }) {
+
+
+  console.log(sortedUsers,"sortedUsers");
+  
+
   return (
     <>
       <table className="table table-bordered caption-top">
@@ -16,8 +21,9 @@ export default function UserTable({ users = [], deleteUser }) {
           </tr>
         </thead>
         <tbody>
-        {Array.isArray(users) && users.length > 0 ? (
-                    users.map((user, index) =>(
+        {
+          (sortedUsers.length>0 || users.length>0)?
+                    (sortedUsers?.length>0 ? sortedUsers : users.length>0 && users).map((user, index) =>(
                         <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             <td>{user.name}</td>
@@ -33,12 +39,12 @@ export default function UserTable({ users = [], deleteUser }) {
                                 </button>
                             </td>
                         </tr>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan="6">No users available</td>
-                    </tr>
-                )}
+                    )): (
+                      <tr>
+                          <td colSpan="6">No users available</td>
+                      </tr>
+                  )}
+                 
         </tbody>
       </table>
     </>
