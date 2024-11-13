@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Navbar({users,setUsers}) {
+export default function Navbar({ users, setUsers }) {
   const location = useLocation();
+  const [searchType, setSearchType] = useState("name");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  function filterSearch(e){
-const {name,value}=e.target
-
-const searchTerm=value.toLowerCase()
-setUsers(()=>(
-  users.filter(item => item.email.includes(searchTerm)) // Filter by search term
-  .sort((a, b) => a.email.localeCompare(b.email))
-))
-
+  function handleSearchTypeChange(type) {
+    setSearchType(type);
   }
-  
+
+  function filterSearch(e) {
+    const { value } = e.target;
+    setSearchTerm(value);
+    const term = value.toLowerCase();
+
+    setUsers(() =>
+      users
+        .filter((item) =>
+          item[searchType]?.toString().toLowerCase().includes(term)
+        ) // Dynamically use searchType
+        .sort((a, b) =>
+          a[searchType]?.toString().localeCompare(b[searchType]?.toString())
+        )
+    );
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">UserNest</Link>
+          <Link className="navbar-brand" to="/">
+            UserNest
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -34,10 +47,14 @@ setUsers(()=>(
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/users">Users</Link>
+                <Link className="nav-link" to="/users">
+                  Users
+                </Link>
               </li>
             </ul>
             {location.pathname === "/users" && (
@@ -45,12 +62,9 @@ setUsers(()=>(
                 <input
                   className="form-control me-2"
                   type="search"
-                  placeholder="Search"
+                  placeholder={`Search by ${searchType}`}
                   aria-label="Search"
-                  onChange={(e)=>filterSearch(e)}
-           
-                  
-                
+                  onChange={filterSearch}
                 />
                 <div className="btn-group">
                   <button type="button" className="btn btn-primary">
@@ -65,10 +79,38 @@ setUsers(()=>(
                     <span className="visually-hidden">Toggle Dropdown</span>
                   </button>
                   <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/users">Name</Link></li>
-                    <li><Link className="dropdown-item" to="/users">Age</Link></li>
-                    <li><Link className="dropdown-item" to="/users">Phone</Link></li>
-                    <li><Link className="dropdown-item" to="/users">Email</Link></li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => handleSearchTypeChange("name")}
+                      >
+                        Name
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => handleSearchTypeChange("age")}
+                      >
+                        Age
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => handleSearchTypeChange("contact")}
+                      >
+                        Contact
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => handleSearchTypeChange("email")}
+                      >
+                        Email
+                      </button>
+                    </li>
                   </ul>
                 </div>
               </div>

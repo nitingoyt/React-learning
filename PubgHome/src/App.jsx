@@ -1,19 +1,31 @@
-import { useState } from 'react'
-import './App.css'
-import AppHeader from './components/Header/appHeader'
+import { app } from "./firebase";
+import "./App.css";
+import AppHeader from "./components/Header/appHeader";
+import SignupPage from "./pages/Signup"
+import SigninPage from "./pages/Signin";
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const signupUser = () => {
+  //   createUserWithEmailAndPassword(
+  //     auth,
+  //     "nitin@example.com",
+  //     "example@123"
+  //   ).then((value) => console.log(value));
+  // };
 
   return (
     <>
-    <div>
-      <h1>Just a name</h1>
-      <AppHeader />
-    </div>
-      
+      <div>
+        <h1>Signup From</h1>
+        <SignupPage/>
+        <AppHeader />
+        <SigninPage/>
+
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
