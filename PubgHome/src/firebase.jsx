@@ -1,4 +1,5 @@
 import {initializeApp} from 'firebase/app'
+// import {} from "./firebase/app"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

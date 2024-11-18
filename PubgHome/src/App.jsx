@@ -1,29 +1,24 @@
 import { app } from "./firebase";
+import { useState } from "react";
 import "./App.css";
+import Logout from "./pages/logout";
 import AppHeader from "./components/Header/appHeader";
-import SignupPage from "./pages/Signup"
+import SignupPage from "./pages/Signup";
 import SigninPage from "./pages/Signin";
-
+import { Route, Routes } from "react-router-dom";
 
 
 function App() {
-  // const signupUser = () => {
-  //   createUserWithEmailAndPassword(
-  //     auth,
-  //     "nitin@example.com",
-  //     "example@123"
-  //   ).then((value) => console.log(value));
-  // };
-
   return (
     <>
-      <div>
+    
+      <div className="app">
         <h1>Signup From</h1>
-        <SignupPage/>
+        <SignupPage />
         <AppHeader />
-        <SigninPage/>
-
+        <SigninPage />
       </div>
+      
     </>
   );
 }

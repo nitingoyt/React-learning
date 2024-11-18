@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "../firebase";
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -15,13 +16,14 @@ const SignupPage = () => {
         setEmail("");
         setPassword("");
       })
-
       .catch((err) => {
         alert("invalid");
-        setPassword("");
-
       });
   };
+
+  const signupWithGoogle = () => {
+    signInWithPopup(auth, googleProvider);
+  }
 
   return (
     <>
@@ -43,6 +45,9 @@ const SignupPage = () => {
         placeholder="Enter your paasword "
       ></input>
       <button onClick={createUser}>SignUp</button>
+      <br /> <br /> <br /> 
+      <button onClick={signupWithGoogle}>Google Signin</button>
+      <br />
     </>
   );
 };
